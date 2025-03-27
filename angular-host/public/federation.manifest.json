@@ -1,3 +1,4 @@
 {
-  "angular-service": "http://localhost:4201/remoteEntry.json"
+  "angular-service": "http://localhost:4201/remoteEntry.json",
+  "react-service": "http://localhost:4202/remoteEntry.js"
 }
