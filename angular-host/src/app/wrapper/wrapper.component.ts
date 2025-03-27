@@ -1,5 +1,5 @@
 import { loadRemoteModule } from '@angular-architects/native-federation';
-import { Component, ElementRef, inject } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-wrapper',
@@ -8,11 +8,13 @@ import { Component, ElementRef, inject } from '@angular/core';
   styleUrl: './wrapper.component.scss',
 })
 export class WrapperComponent {
-  elm = inject(ElementRef);
-
+  @ViewChild('reactContainer', { static: false }) reactContainer!: ElementRef;
   async ngOnInit() {
-    await loadRemoteModule('react-service', './App');
-    const root = document.createElement('app');
-    this.elm.nativeElement.appendChild(root);
+    const { default: ReactApp } = await loadRemoteModule({
+      remoteName: 'react-service',
+      exposedModule: './App',
+    });
+
+    ReactApp(this.reactContainer.nativeElement);
   }
 }

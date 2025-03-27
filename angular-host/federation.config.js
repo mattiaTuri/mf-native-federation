@@ -4,6 +4,9 @@ const {
 } = require("@angular-architects/native-federation/config");
 
 module.exports = withNativeFederation({
+  remotes: {
+    "react-service": "http://localhost:4202/remoteEntry.js",
+  },
   shared: {
     ...shareAll({
       singleton: true,
