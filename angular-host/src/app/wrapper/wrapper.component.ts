@@ -8,7 +8,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
   styleUrl: './wrapper.component.scss',
 })
 export class WrapperComponent {
-  @ViewChild('reactContainer', { static: false }) reactContainer!: ElementRef;
+  @ViewChild('container', { static: false }) reactContainer!: ElementRef;
   async ngOnInit() {
     const { default: ReactApp } = await loadRemoteModule({
       remoteName: 'react-service',
